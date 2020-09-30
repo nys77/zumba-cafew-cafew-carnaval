@@ -34,4 +34,6 @@ A video game with three.js
 
 **Readme by Nicolas.nys**
 J'ai mi les cases en nori car je gére mal la fall box mais tous le reste marche (il spawn bien sur une case non noir). Pour tester la mort de la personne faire 3 collision ou réactiver les cases noires. 
+
+Je pense mériter 80/100 du au hit box et le la hit box trop importante pour fall
 Cordialement NYS Nicolas
