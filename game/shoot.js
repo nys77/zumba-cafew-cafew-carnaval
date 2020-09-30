@@ -1,5 +1,7 @@
 var bulletTime1 = 0;
 
+var is_dead = false;
+
 var bullet_player1_material = new THREE.MeshLambertMaterial(
 {
     color: 0x00ff00, 
@@ -42,8 +44,18 @@ function collisions()
 function bullet_collision()
 {
     //collision between bullet and walls
+    var x = enemy1.graphic.position.x + WIDTH / 2;
+    var y = enemy1.graphic.position.y + HEIGHT / 2;
+
     for (var i = 0; i < player1.bullets.length; i++)
     {
+        var x_bullet = player1.bullets[i].position.x + WIDTH / 2;
+        var y_bullet = player1.bullets[i].position.y + HEIGHT / 2;
+        if ( x_bullet - x < 0 && y_bullet - y < 0.2) {
+            scene.remove(enemy1.graphic);
+            is_dead = true;
+            controls.update();
+        }
         if (Math.abs(player1.bullets[i].position.x) >= WIDTH / 2 ||
             Math.abs(player1.bullets[i].position.y) >= HEIGHT / 2)
         {
@@ -61,12 +73,20 @@ function player_collision()
     var x = player1.graphic.position.x + WIDTH / 2;
     var y = player1.graphic.position.y + HEIGHT / 2;
 
+    var x_enmy = enemy1.graphic.position.x + WIDTH / 2;
+    var y_enmy = player1.graphic.position.y + HEIGHT / 2;
+
+    if ( x < 0 )
+        player1.graphic.position.x -= x;
     if ( x > WIDTH )
         player1.graphic.position.x -= x - WIDTH;
     if ( y < 0 )
         player1.graphic.position.y -= y;
     if ( y > HEIGHT )
         player1.graphic.position.y -= y - HEIGHT;
+    if (x - x_enmy < 0.2 && y - y_enmy < 0.2 && is_dead == false) {
+        player1.dead();
+    }
 
 }
 
@@ -82,6 +102,11 @@ function player_falling()
 
     for (var i = 0; i < length; i++) {
         element = noGround[i];
+        if (!element) {
+            player1.dead();
+            break;
+        }
+
 
         var tileX = (element[0]) | 0;
         var tileY = (element[1]) | 0;
