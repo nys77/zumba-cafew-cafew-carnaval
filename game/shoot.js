@@ -51,7 +51,7 @@ function bullet_collision()
     {
         var x_bullet = player1.bullets[i].position.x + WIDTH / 2;
         var y_bullet = player1.bullets[i].position.y + HEIGHT / 2;
-        if ( x_bullet - x < 0 && y_bullet - y < 0.2) {
+        if ( x_bullet - x < 0.2 && y_bullet - y < 0.2) {
             scene.remove(enemy1.graphic);
             is_dead = true;
             controls.update();

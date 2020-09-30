@@ -29,3 +29,9 @@ A video game with three.js
 - [X] : As a ennemy, I want to move on one axe
 - [X] : As a player, I want to decrease my life when I am touch by an ennemy
 - [X] : As a player, I want to decrease my life when I fall 
+
+
+
+**Readme by Nicolas.nys**
+J'ai mi les cases en nori car je gére mal la fall box mais tous le reste marche (il spawn bien sur une case non noir). Pour tester la mort de la personne faire 3 collision ou réactiver les cases noires. 
+Cordialement NYS Nicolas
